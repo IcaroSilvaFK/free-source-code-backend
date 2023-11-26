@@ -8,7 +8,9 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"os"
 
+	"github.com/IcaroSilvaFK/free-code-source-back/infra/utils"
 	"github.com/labstack/echo/v4"
 )
 
@@ -36,8 +38,8 @@ func (lc *LoginController) Login(ctx echo.Context) error {
 	fmt.Println(code)
 
 	bt, err := json.Marshal(map[string]string{
-		"client_id":     "59928a2b5e7e2e57d58a",
-		"client_secret": "de3ce4996f432ece27ce7ebc7c72b7e486b26d46",
+		"client_id":     os.Getenv(utils.GITHUB_CLIENT_ID),
+		"client_secret": os.Getenv(utils.GITHUB_CLIENT_SECRET),
 		"code":          code,
 		// "redirect_uri":  "http://localhost:8080/login/github/callback",
 	})
