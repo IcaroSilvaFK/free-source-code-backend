@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/IcaroSilvaFK/free-code-source-back/cmd/routes"
@@ -33,5 +34,5 @@ func main() {
 
 	port := os.Getenv(utils.PORT)
 
-	e.Logger.Fatal(e.Start(port))
+	e.Logger.Fatal(e.Start(fmt.Sprintf(":%s", port)))
 }
