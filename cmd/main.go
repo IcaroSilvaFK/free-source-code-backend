@@ -1,7 +1,10 @@
 package main
 
 import (
+	"os"
+
 	"github.com/IcaroSilvaFK/free-code-source-back/cmd/routes"
+	"github.com/IcaroSilvaFK/free-code-source-back/infra/utils"
 	"github.com/IcaroSilvaFK/free-code-source-back/infra/validators"
 	"github.com/go-playground/validator"
 	"github.com/labstack/echo/v4"
@@ -28,5 +31,7 @@ func main() {
 
 	routes.NewAppRoutes(r)
 
-	e.Logger.Fatal(e.Start(":8080"))
+	port := os.Getenv(utils.PORT)
+
+	e.Logger.Fatal(e.Start(port))
 }
