@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"os"
+	"time"
 
 	"github.com/IcaroSilvaFK/free-code-source-back/cmd/routes"
 	"github.com/IcaroSilvaFK/free-code-source-back/infra/utils"
@@ -27,6 +29,15 @@ func main() {
 	e.Validator = &validators.CustomValidator{
 		Validator: validator.New(),
 	}
+
+	e.GET("/heath", func(ctx echo.Context) error {
+
+		return ctx.JSON(http.StatusAccepted, echo.Map{
+			"message":   "ok",
+			"status":    http.StatusAccepted,
+			"timestamp": time.Now(),
+		})
+	})
 
 	r := e.Group("/api")
 
