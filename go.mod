@@ -1,6 +1,6 @@
 module github.com/IcaroSilvaFK/free-code-source-back
 
-go 1.21.0
+go 1.17
 
 require (
 	github.com/go-playground/validator v9.31.0+incompatible
